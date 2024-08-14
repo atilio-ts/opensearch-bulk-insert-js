@@ -1,0 +1,1 @@
+This project is for doing bulk inserts into opensearch, just add your opensearch url and the data in JSON format.
