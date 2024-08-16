@@ -1,35 +1,33 @@
 const { Client } = require('@opensearch-project/opensearch');
 
-//database params
+// TODO: Add your db parameters
 const client = new Client({
   node: 'your-url',
   auth: {
-    username: 'admin',
-    password: 'admin'
+    username: 'username',
+    password: 'password'
   },
   ssl: {
-    rejectUnauthorized: false      // Set to true if using a trusted certificate
-  }
+    rejectUnauthorized: false
+  },
+  requestTimeout: 3000
 });
 
-// JSON array to be inserted
+// TODO: Add your data
 const data = [
-  { id: 1, name: 'Product 1', price: 100 },
-  { id: 2, name: 'Product 2', price: 150 },
-  { id: 3, name: 'Product 3', price: 200 }
-];
+    {},{},{}
+]
 
 async function insertData() {
   for (const item of data) {
     try {
       const response = await client.index({
-        index: 'test-table',  // Replace with your index-table name
-        id: item.id.toString(),
+        index: 'index-name',  // TODO: Replace with your index name
         body: item
       });
-      console.log(`Inserted document ID: ${item.id}`, response);
+      console.log(`Inserted document.`, response);
     } catch (error) {
-      console.error(`Error inserting document ID: ${item.id}`, error);
+      console.error(`Error inserting document.`, error);
     }
   }
 }
